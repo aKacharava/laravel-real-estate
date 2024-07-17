@@ -11,12 +11,12 @@ return new class extends Migration
         Schema::table('listings', function (Blueprint $table) {
             $table->unsignedTinyInteger('beds');
             $table->unsignedTinyInteger('baths');
-            $table->unsignedTinyInteger('area');
+            $table->unsignedSmallInteger('area');
             $table->tinyText('city')->nullable();
             $table->tinyText('zip_code')->nullable();
             $table->tinyText('street_name')->nullable();
             $table->tinyText('street_number')->nullable();
-            $table->tinyInteger('price')->nullable();
+            $table->unsignedInteger('price')->nullable();
         });
     }
 
