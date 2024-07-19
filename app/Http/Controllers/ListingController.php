@@ -36,7 +36,19 @@ class ListingController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        Listing::create($request->all());
+        Listing::create([
+            ...$request->all(),
+            ...$request->validate([
+                'beds' => 'required|integer|min:0|max:20',
+                'baths' => 'required|integer|min:0|max:20',
+                'area' => 'required|integer|min:15|max:1500',
+                'city' => 'required',
+                'zip_code' => 'required',
+                'street_name' => 'required',
+                'street_number' => 'required|min:0|max:1000',
+                'price' => 'required|integer|min:1|max:4000000',
+            ])
+        ]);
 
         return redirect()->route('listing.Index')
             ->with('success', 'Listing created successfully.');
