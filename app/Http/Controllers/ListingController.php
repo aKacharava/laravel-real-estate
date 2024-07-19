@@ -88,11 +88,11 @@ class ListingController extends Controller
             ->with('success', 'Listing edited successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Listing $listing): RedirectResponse
     {
-        //
+        $listing->delete();
+
+        return redirect()->back()
+            ->with('success', 'Listing deleted successfully.');
     }
 }

@@ -1,5 +1,5 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3'
+import {Link, useForm} from '@inertiajs/vue3'
 
 const props = defineProps({
     listing: Object
@@ -87,6 +87,7 @@ const update = () => form.put(`/listing/${props.listing.id}`);
 
             <div>
                 <button type="submit">Edit</button>
+                
             </div>
         </div>
     </form>
