@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class IndexController extends Controller
 {
-    public function index()
+    public function index(): Response|ResponseFactory
     {
         return inertia(
             'Index/Index',
@@ -16,7 +17,7 @@ class IndexController extends Controller
         );
     }
 
-    public function show()
+    public function show(): Response|ResponseFactory
     {
         return inertia('Index/Show');
     }
