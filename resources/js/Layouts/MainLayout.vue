@@ -13,8 +13,8 @@ const successMessage = computed(() => page.props.flash.success);
 </script>
 
 <template>
-    <Link href="/">Home</Link>&nbsp;
-    <Link href="/hello">Hello</Link>
+    <Link href="/listing">Listings</Link>&nbsp;
+    <Link href="/listing/create">New Listing</Link>
 
 <!--    <div> counter {{ counter }} </div>-->
     <div v-if="page.props.flash.success" class="success">
