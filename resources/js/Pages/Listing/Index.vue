@@ -3,6 +3,7 @@ import { Link } from "@inertiajs/vue3";
 import ListingAddress from "@/Components/ListingAddress.vue";
 import { route } from "ziggy";
 import Box from "@/Components/UI/Box.vue";
+import ListingSpace from "@/Components/UI/ListingSpace.vue";
 
 defineProps({
     listings: Array
@@ -14,7 +15,8 @@ defineProps({
         <Box v-for="listing in listings" :key="listing.id">
             <div>
                 <Link :href="route('listing.show', { listing: listing.id })">
-                    <ListingAddress :listing="listing" />
+                    <ListingSpace :listing="listing" class="text-lg" />
+                    <ListingAddress :listing="listing" class="text-gray-500" />
                 </Link>
             </div>
             <div>
