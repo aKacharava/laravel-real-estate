@@ -1,5 +1,6 @@
 <script setup>
-import {Link, useForm} from '@inertiajs/vue3'
+import { useForm } from '@inertiajs/vue3'
+import { route } from "ziggy";
 
 const props = defineProps({
     listing: Object
@@ -15,7 +16,7 @@ const form = useForm({
     zip_code: props.listing.zip_code,
     price: props.listing.price,
 })
-const update = () => form.put(`/listing/${props.listing.id}`);
+const update = () => form.put(route('listing.update', { listing: props.listing.id }));
 </script>
 
 <template>
@@ -87,7 +88,7 @@ const update = () => form.put(`/listing/${props.listing.id}`);
 
             <div>
                 <button type="submit">Edit</button>
-                
+
             </div>
         </div>
     </form>
