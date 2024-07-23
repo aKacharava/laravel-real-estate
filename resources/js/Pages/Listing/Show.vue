@@ -3,7 +3,7 @@ import ListingAddress from "@/Components/ListingAddress.vue";
 import ListingSpace from "@/Components/UI/ListingSpace.vue";
 import Price from "@/Components/Price.vue";
 import Box from "@/Components/UI/Box.vue";
-import PaymentCalculator from "../../Components/PaymentCalculator.vue";
+import PaymentCalculator from "../../Components/PaymentCalculator/PaymentCalculator.vue";
 
 defineProps({
     listing: Object

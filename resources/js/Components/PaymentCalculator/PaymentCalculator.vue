@@ -1,9 +1,10 @@
 <script setup>
-import Slider from "./UI/Slider.vue";
-import Box from "./UI/Box.vue";
-import Price from "./Price.vue";
+import Slider from "../UI/Slider.vue";
+import Box from "../UI/Box.vue";
+import Price from "../Price.vue";
 import { ref } from "vue";
-import { useMonthlyPayment } from "../Composables/useMonthlyPayment.js";
+import { useMonthlyPayment } from "../../Composables/useMonthlyPayment.js";
+import PaidView from "./PaidView.vue";
 
 
 const props = defineProps({
@@ -13,7 +14,7 @@ const props = defineProps({
 const interestRate = ref(2.5);
 const duration = ref(25);
 
-const { monthlyPayment } = useMonthlyPayment(props.price, interestRate, duration);
+const { monthlyPayment, totalPaid, totalInterest } = useMonthlyPayment(props.price, interestRate, duration);
 </script>
 
 <template>
@@ -27,6 +28,11 @@ const { monthlyPayment } = useMonthlyPayment(props.price, interestRate, duration
         <div class="text-gray-600 dark:text-gray-300 mt-2">
             <div class="text-gray-400">Your monthly payment</div>
             <Price :price="monthlyPayment" class="text-3xl"/>
+        </div>
+        <div class="mt-2 text-gray-500">
+            <PaidView label="Total paid" :price="totalPaid" />
+            <PaidView label="Principal paid" :price="price" />
+            <PaidView label="Interest paid" :price="totalInterest" />
         </div>
     </Box>
 </template>
