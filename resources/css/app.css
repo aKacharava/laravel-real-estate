@@ -43,4 +43,15 @@
         dark:text-gray-300
         font-medium;
     }
+
+    .slider {
+        @apply
+        w-full
+        h-4
+        bg-gray-200
+        dark:bg-gray-700
+        rounded-lg
+        appearance-none
+        cursor-pointer;
+    }
 }

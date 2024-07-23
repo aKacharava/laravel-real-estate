@@ -3,6 +3,7 @@ import ListingAddress from "@/Components/ListingAddress.vue";
 import ListingSpace from "@/Components/UI/ListingSpace.vue";
 import Price from "@/Components/Price.vue";
 import Box from "@/Components/UI/Box.vue";
+import PaymentCalculator from "../../Components/PaymentCalculator.vue";
 
 defineProps({
     listing: Object
@@ -23,12 +24,7 @@ defineProps({
                 <ListingSpace :listing="listing" class="text-lg" />
                 <ListingAddress :listing="listing" class="text-gray-500" />
             </Box>
-            <Box>
-                <template #header>
-                    Offer
-                </template>
-                Make an offer
-            </Box>
+            <PaymentCalculator />
         </div>
     </div>
 </template>
