@@ -6,7 +6,7 @@ const props = defineProps({
 })
 
 const formatedPrice = computed(() => {
-    return Number(props.price).toLocaleString('de-DE', {
+    return Number(props.price).toLocaleString('en-US', {
         style: 'currency',
         currency: "EUR",
         maximumFractionDigits: 0
