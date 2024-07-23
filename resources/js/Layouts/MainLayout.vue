@@ -2,6 +2,7 @@
 import { Link, usePage } from "@inertiajs/vue3";
 import { computed } from 'vue';
 import { route } from "ziggy";
+import Button from "../Components/UI/Button.vue";
 
 const page = usePage();
 
@@ -19,7 +20,9 @@ const successMessage = computed(() => page.props.flash.success);
                     <Link :href="route('listing.Index')">Realtrr</Link>
                 </div>
                 <div>
-                    <Link :href="route('listing.create')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium p-2 rounded-md transition-all duration-200">+ New Listing</Link>
+                    <Button>
+                        <Link :href="route('listing.create')">+ New Listing</Link>
+                    </Button>
                 </div>
             </nav>
         </div>

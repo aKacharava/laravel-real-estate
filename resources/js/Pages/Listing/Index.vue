@@ -5,6 +5,7 @@ import { route } from "ziggy";
 import Box from "@/Components/UI/Box.vue";
 import ListingSpace from "@/Components/UI/ListingSpace.vue";
 import Price from "@/Components/Price.vue";
+import Button from "../../Components/UI/Button.vue";
 
 defineProps({
     listings: Array
@@ -21,11 +22,13 @@ defineProps({
                     <ListingAddress :listing="listing" class="text-gray-500" />
                 </Link>
             </div>
-            <div>
-                <Link :href="route('listing.edit', { listing: listing.id })">Edit</Link>
-            </div>
-            <div>
-                <Link :href="route('listing.destroy', { listing: listing.id })" method="DELETE" as="button">Delete</Link>
+            <div class="flex gap-2 mt-2">
+                <Button>
+                    <Link :href="route('listing.edit', { listing: listing.id })">Edit</Link>
+                </Button>
+                <Button>
+                    <Link :href="route('listing.destroy', { listing: listing.id })" method="DELETE" as="button">Delete</Link>
+                </Button>
             </div>
         </Box>
     </div>

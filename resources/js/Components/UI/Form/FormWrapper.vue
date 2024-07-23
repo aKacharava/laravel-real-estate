@@ -1,6 +1,7 @@
 <script setup>
 import FormInput from "./FormInput.vue";
 import { toRefs } from 'vue';
+import Button from "../Button.vue";
 
 const props = defineProps({
     form: Object
@@ -20,8 +21,6 @@ const { form } = toRefs(props);
         <FormInput class="col-span-2" label="Street Nr" v-model:form-input="form.street_number" :form-error="form.errors.street_number" />
         <FormInput class="col-span-6" label="Price" v-model:form-input="form.price" :form-error="form.errors.price" />
 
-        <div class="col-span-6">
-            <button type="submit">Create</button>
-        </div>
+        <Button type="submit">Create</Button>
     </div>
 </template>
