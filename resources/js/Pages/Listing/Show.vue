@@ -24,7 +24,7 @@ defineProps({
                 <ListingSpace :listing="listing" class="text-lg" />
                 <ListingAddress :listing="listing" class="text-gray-500" />
             </Box>
-            <PaymentCalculator />
+            <PaymentCalculator :price="listing.price" />
         </div>
     </div>
 </template>
