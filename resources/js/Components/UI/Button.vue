@@ -5,9 +5,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="col-span-6">
-        <button :type="type" class="btn-primary">
-            <slot />
-        </button>
-    </div>
+    <button :type="type" class="col-span-6">
+        <slot />
+    </button>
 </template>

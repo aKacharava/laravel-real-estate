@@ -16,7 +16,7 @@ const handleInput = (event) => {
     <div>
         <label class="label">{{ label }}</label>
         <input :value="formInput" @input="handleInput" type="text" class="input" />
-        <div v-if="formError" class="error">
+        <div v-if="formError" class="input-error">
             {{ formError }}
         </div>
     </div>

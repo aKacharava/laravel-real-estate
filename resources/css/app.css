@@ -28,6 +28,13 @@
         text-gray-500;
     }
 
+    .input-error {
+        @apply
+        text-sm
+        text-red-500
+        dark:text-red-400;
+    }
+
     .label {
         @apply
         block
