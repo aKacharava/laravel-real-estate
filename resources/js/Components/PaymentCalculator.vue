@@ -2,22 +2,18 @@
 import Slider from "./UI/Slider.vue";
 import Box from "./UI/Box.vue";
 import Price from "./Price.vue";
-import { ref, computed } from "vue";
+import { ref } from "vue";
+import { useMonthlyPayment } from "../Composables/useMonthlyPayment.js";
+
 
 const props = defineProps({
-    price: Object,
+    price: Number,
 })
 
 const interestRate = ref(2.5);
 const duration = ref(25);
 
-const monthlyPayment = computed(() => {
-    const principle = props.price;
-    const monthlyInterest = interestRate.value / 100 / 12;
-    const numberOfPaymentMonths = duration.value * 12;
-
-    return principle * monthlyInterest * (Math.pow(1 + monthlyInterest, numberOfPaymentMonths)) / (Math.pow(1 + monthlyInterest, numberOfPaymentMonths) - 1);
-})
+const { monthlyPayment } = useMonthlyPayment(props.price, interestRate, duration);
 </script>
 
 <template>
