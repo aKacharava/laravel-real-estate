@@ -19,6 +19,6 @@ const create = () => form.post(route('listing.store'))
 
 <template>
     <form @submit.prevent="create">
-        <FormWrapper :form="form" />
+        <FormWrapper :form="form" button-label="Create" />
     </form>
 </template>

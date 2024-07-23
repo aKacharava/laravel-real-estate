@@ -4,7 +4,8 @@ import { toRefs } from 'vue';
 import Button from "../Button.vue";
 
 const props = defineProps({
-    form: Object
+    form: Object,
+    buttonLabel: String
 });
 
 const { form } = toRefs(props);
@@ -21,6 +22,6 @@ const { form } = toRefs(props);
         <FormInput class="col-span-2" label="Street Nr" v-model:form-input="form.street_number" :form-error="form.errors.street_number" />
         <FormInput class="col-span-6" label="Price" v-model:form-input="form.price" :form-error="form.errors.price" />
 
-        <Button type="submit">Create</Button>
+        <Button type="submit" class="btn-primary">{{ buttonLabel }}</Button>
     </div>
 </template>

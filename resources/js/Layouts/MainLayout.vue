@@ -19,11 +19,9 @@ const successMessage = computed(() => page.props.flash.success);
                 <div class="text-xl text-indigo-600 dark:text-indigo-300 font-bold text-center">
                     <Link :href="route('listing.Index')">Realtrr</Link>
                 </div>
-                <div>
-                    <Button>
-                        <Link :href="route('listing.create')">+ New Listing</Link>
-                    </Button>
-                </div>
+                <Button class="btn-primary">
+                    <Link :href="route('listing.create')">+ New Listing</Link>
+                </Button>
             </nav>
         </div>
     </header>
