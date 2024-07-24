@@ -7,6 +7,8 @@ import Button from "../Components/UI/Button.vue";
 const page = usePage();
 
 const successMessage = computed(() => page.props.flash.success);
+
+const user = computed(() => page.props.user)
 </script>
 
 <template>
@@ -19,9 +21,16 @@ const successMessage = computed(() => page.props.flash.success);
                 <div class="text-xl text-indigo-600 dark:text-indigo-300 font-bold text-center">
                     <Link :href="route('listing.Index')">Realtrr</Link>
                 </div>
-                <Button class="btn-primary">
-                    <Link :href="route('listing.create')">+ New Listing</Link>
-                </Button>
+                <div v-if="user" class="flex items-center gap-4">
+                    <div class="text-sm text-gray-500">{{ user.name }}</div>
+                    <Button class="btn-primary">
+                        <Link :href="route('listing.create')">+ New Listing</Link>
+                    </Button>
+                    <Link :href="route('logout')">Logout</Link>
+                </div>
+                <div v-else>
+                    <Link :href="route('login')">Sign-in</Link>
+                </div>
             </nav>
         </div>
     </header>
