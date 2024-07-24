@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -18,7 +19,7 @@ class AuthController extends Controller
     /**
      * @throws ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $authUser = Auth::attempt(
             $request->validate([
@@ -28,7 +29,7 @@ class AuthController extends Controller
             true
         );
 
-        if($authUser) {
+        if(!$authUser) {
             throw ValidationException::withMessages([
                 'email' => 'Login failed'
             ]);
@@ -36,7 +37,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended();
+        return redirect()->intended('listing');
     }
 
     public function destroy()
