@@ -12,7 +12,7 @@ const login = () => form.post(route('login.store'));
 
 <template>
     <form @submit.prevent="login">
-        <div class="w-1/2 mx-auto">
+        <div class="w-full sm:w-1/2 mx-auto">
             <div>
                 <label for="email" class="label">E-mail (username)</label>
                 <input type="text" id="email" class="input" v-model="form.email" />
