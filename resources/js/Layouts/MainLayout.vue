@@ -26,7 +26,7 @@ const user = computed(() => page.props.user)
                     <Button class="btn-primary">
                         <Link :href="route('listing.create')">+ New Listing</Link>
                     </Button>
-                    <Link :href="route('logout')">Logout</Link>
+                    <Link :href="route('logout')" method="delete" as="button">Logout</Link>
                 </div>
                 <div v-else>
                     <Link :href="route('login')">Sign-in</Link>
