@@ -1,5 +1,5 @@
 <script setup>
-import { useForm } from "@inertiajs/vue3";
+import {Link, useForm} from "@inertiajs/vue3";
 import { route } from "ziggy";
 
 const form = useForm({
@@ -25,6 +25,9 @@ const login = () => form.post(route('login.store'));
             </div>
             <div class="mt-4">
                 <button class="btn-primary w-full" type="submit">Login</button>
+                <div class="mt-2 text-center">
+                    <Link :href="route('user-account.create')" class="text-sm text-gray-500">Don't have an account? Sign Up</Link>
+                </div>
             </div>
         </div>
     </form>
