@@ -17,16 +17,13 @@ class UserAccountController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $user = User::make(
+        $user = User::create(
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|confirmed|min:8'
             ])
         );
-
-        $user->password = bcrypt($request->password);
-        $user->save();
 
         auth()->login($user);
 
