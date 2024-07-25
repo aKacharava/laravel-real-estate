@@ -9,7 +9,7 @@ const form = useForm({
     password_confirmation: null
 })
 
-const register = () => form.post(route('register.create'));
+const register = () => form.post(route('user-account.store'));
 </script>
 
 <template>
