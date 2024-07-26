@@ -21,15 +21,12 @@ class AuthController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $authUser = Auth::attempt(
-            $request->validate([
-                'email' => 'required|string|email',
-                'password' => 'required|string',
-            ]),
-            true
-        );
+        $credentials = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
 
-        if(!$authUser) {
+        if(!Auth::attempt($credentials, true)) {
             throw ValidationException::withMessages([
                 'email' => 'Login failed'
             ]);
