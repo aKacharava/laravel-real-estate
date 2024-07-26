@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
@@ -10,6 +11,13 @@ use Inertia\ResponseFactory;
 
 class ListingController extends Controller
 {
+    use AuthorizesRequests;
+
+    public function __construct()
+    {
+        $this->authorizeResource(Listing::class, 'listing');
+    }
+
     public function index(): Response|ResponseFactory
     {
         return inertia(
@@ -22,6 +30,7 @@ class ListingController extends Controller
 
     public function create(): Response|ResponseFactory
     {
+//        Gate::authorize('create', Listing::class);
         return inertia('Listing/Create');
     }
 
@@ -47,6 +56,8 @@ class ListingController extends Controller
 
     public function show(Listing $listing): Response|ResponseFactory
     {
+//        Gate::authorize('view', $listing);
+
         return inertia(
             'Listing/Show',
             [
