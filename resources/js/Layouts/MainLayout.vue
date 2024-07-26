@@ -22,6 +22,9 @@ const user = computed(() => page.props.user)
                     <Link :href="route('listing.Index')">Realtrr</Link>
                 </div>
                 <div v-if="user" class="flex items-center gap-4">
+                    <Link :href="route('listing.create')">
+                        <Button class="btn-primary">+ New Listing</Button>
+                    </Link>
                     <div class="text-sm text-gray-500">{{ user.name }}</div>
                     <Link :href="route('logout')" method="delete" as="button">
                         <Button class="btn-primary">
