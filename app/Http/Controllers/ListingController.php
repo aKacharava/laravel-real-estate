@@ -29,37 +29,36 @@ class ListingController extends Controller
             'areaTo',
         ]);
 
-        $query = Listing::orderByDesc('created_at')
-            ->when(
-                $filters['priceFrom'] ?? false,
-                fn ($query, $value) => $query->where('price', '>=', $value),
-            )
-            ->when(
-                $filters['priceTo'] ?? false,
-                fn ($query, $value) => $query->where('price', '<=', $value),
-            )
-            ->when(
-                $filters['beds'] ?? false,
-                fn ($query, $value) => $query->where('beds', $value),
-            )
-            ->when(
-                $filters['baths'] ?? false,
-                fn ($query, $value) => $query->where('baths', $value),
-            )
-            ->when(
-                $filters['areaFrom'] ?? false,
-                fn ($query, $value) => $query->where('area', '>=', $value)
-            )
-            ->when(
-                $filters['areaTo'] ?? false,
-                fn ($query, $value) => $query->where('area', '<=', $value)
-            );
-
         return inertia(
             'Listing/Index',
             [
                 'filters' => $filters,
-                'listings' => $query->paginate(10)
+                'listings' => Listing::orderByDesc('created_at')
+                    ->when(
+                        $filters['priceFrom'] ?? false,
+                        fn ($query, $value) => $query->where('price', '>=', $value),
+                    )
+                    ->when(
+                        $filters['priceTo'] ?? false,
+                        fn ($query, $value) => $query->where('price', '<=', $value),
+                    )
+                    ->when(
+                        $filters['beds'] ?? false,
+                        fn ($query, $value) => $query->where('beds', $value),
+                    )
+                    ->when(
+                        $filters['baths'] ?? false,
+                        fn ($query, $value) => $query->where('baths', $value),
+                    )
+                    ->when(
+                        $filters['areaFrom'] ?? false,
+                        fn ($query, $value) => $query->where('area', '>=', $value)
+                    )
+                    ->when(
+                        $filters['areaTo'] ?? false,
+                        fn ($query, $value) => $query->where('area', '<=', $value)
+                    )
+                    ->paginate(10)
                     ->withQueryString(),
             ]
         );
