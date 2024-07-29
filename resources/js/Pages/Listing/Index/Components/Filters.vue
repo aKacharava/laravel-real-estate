@@ -1,4 +1,5 @@
 <script setup>
+import Button from "@/Components/UI/Button.vue";
 
 </script>
 
@@ -9,23 +10,23 @@
                 <input
                     type="text"
                     placeholder="Price from"
-                    class="filter-input-left"
+                    class="filter-input-left w-28"
                 />
                 <input
                     type="text"
                     placeholder="Price to"
-                    class="filter-input-right"
+                    class="filter-input-right w-28"
                 />
             </div>
             <div class="flex flex-nowrap items-center">
-                <select class="filter-input-left">
+                <select class="filter-input-left w-28">
                     <option :value="null">Beds</option>
                     <option v-for="n in 5" :key="n" :value="n">
                         {{n}}
                     </option>
                     <option>6+</option>
                 </select>
-                <select class="filter-input-right">
+                <select class="filter-input-right w-28">
                     <option :value="null">Baths</option>
                     <option v-for="n in 5" :key="n" :value="n">
                         {{n}}
@@ -34,11 +35,11 @@
                 </select>
             </div>
             <div class="flex flex-nowrap items-center">
-                <input type="text" placeholder="Area from" class="filter-input-left" />
-                <input type="text" placeholder="Area to" class="filter-input-right" />
+                <input type="text" placeholder="Area from" class="filter-input-left w-28" />
+                <input type="text" placeholder="Area to" class="filter-input-right w-28" />
             </div>
 
-            <button type="submit">Filter</button>
+            <Button type="submit" :is-primary="true">Filter</Button>
             <button type="reset">Clear</button>
         </div>
     </form>
