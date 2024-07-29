@@ -8,12 +8,12 @@ const props = defineProps({
 })
 
 const filterForm = useForm({
-    priceFrom: props.filters.priceFrom,
-    priceTo: props.filters.priceTo,
-    beds: props.filters.beds,
-    baths: props.filters.baths,
-    areaFrom: props.filters.areaFrom,
-    areaTo: props.filters.areaTo
+    priceFrom: props.filters.priceFrom ?? null,
+    priceTo: props.filters.priceTo ?? null,
+    beds: props.filters.beds ?? null,
+    baths: props.filters.baths ?? null,
+    areaFrom: props.filters.areaFrom ?? null,
+    areaTo: props.filters.areaTo ?? null
 });
 
 const filter = () => {
@@ -33,6 +33,7 @@ const clear = () => {
     filterForm.baths = null
     filterForm.areaFrom = null
     filterForm.areaTo = null
+    filter()
 }
 </script>
 
