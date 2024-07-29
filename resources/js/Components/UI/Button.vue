@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-    <button :type="type" :class="['col-span-6', isPrimary ? 'btn-primary' : '']">
+    <button :type="type" :class="['col-span-6', isPrimary ? 'btn-primary' : 'btn-secondary']">
         <slot />
     </button>
 </template>

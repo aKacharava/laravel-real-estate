@@ -30,10 +30,10 @@ const { monthlyPayment } = useMonthlyPayment(props.listing.price, 2.5, 25);
             </Link>
         </div>
         <div class="flex gap-2 mt-2">
-            <Button class="btn-primary">
+            <Button :is-primary="true">
                 <Link :href="route('listing.edit', { listing: listing.id })">Edit</Link>
             </Button>
-            <Button class="btn-primary">
+            <Button>
                 <Link :href="route('listing.destroy', { listing: listing.id })" method="DELETE" as="button">Delete</Link>
             </Button>
         </div>

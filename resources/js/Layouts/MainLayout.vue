@@ -23,18 +23,18 @@ const user = computed(() => page.props.user)
                 </div>
                 <div v-if="user" class="flex items-center gap-4">
                     <Link :href="route('listing.create')">
-                        <Button class="btn-primary">+ New Listing</Button>
+                        <Button :is-primary="true">+ New Listing</Button>
                     </Link>
                     <div class="text-sm text-gray-500">{{ user.name }}</div>
                     <Link :href="route('logout')" method="delete" as="button">
-                        <Button class="btn-primary">
+                        <Button :is-primary="true">
                             Logout
                         </Button>
                     </Link>
                 </div>
                 <div v-else class="flex items-center gap-2">
                     <Link :href="route('user-account.create')">
-                        <Button class="btn-primary">Register</Button>
+                        <Button :is-primary="true">Register</Button>
                     </Link>
                     <Link :href="route('login')">Sign-in</Link>
                 </div>

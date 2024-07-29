@@ -23,7 +23,7 @@ const { form } = toRefs(props);
         <FormInput class="col-span-6" label="Price" v-model:form-input="form.price" :form-error="form.errors.price" />
 
         <div>
-            <Button type="submit" class="btn-primary">{{ buttonLabel }}</Button>
+            <Button type="submit" :is-primary="true">{{ buttonLabel }}</Button>
         </div>
     </div>
 </template>

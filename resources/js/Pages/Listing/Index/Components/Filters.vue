@@ -40,7 +40,7 @@ import Button from "@/Components/UI/Button.vue";
             </div>
 
             <Button type="submit" :is-primary="true">Filter</Button>
-            <button type="reset">Clear</button>
+            <Button type="reset">Clear</Button>
         </div>
     </form>
 </template>
