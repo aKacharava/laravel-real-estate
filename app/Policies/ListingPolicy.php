@@ -11,7 +11,7 @@ class ListingPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(?User $user): bool
     {
         return true;
     }
@@ -19,7 +19,7 @@ class ListingPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, listing $listing): bool
+    public function view(?User $user, listing $listing): bool
     {
         return true;
     }
