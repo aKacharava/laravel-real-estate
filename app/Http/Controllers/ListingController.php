@@ -44,11 +44,11 @@ class ListingController extends Controller
                     )
                     ->when(
                         $filters['beds'] ?? false,
-                        fn ($query, $value) => $query->where('beds', $value),
+                        fn ($query, $value) => $query->where('beds', (int)$value < 6 ? '=' : '>=', $value),
                     )
                     ->when(
                         $filters['baths'] ?? false,
-                        fn ($query, $value) => $query->where('baths', $value),
+                        fn ($query, $value) => $query->where('baths' , (int)$value < 6 ? '=' : '>=', $value),
                     )
                     ->when(
                         $filters['areaFrom'] ?? false,
