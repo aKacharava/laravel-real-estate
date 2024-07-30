@@ -5,6 +5,7 @@ import ListingSpace from "@/Components/UI/ListingSpace.vue";
 import ListingAddress from "@/Components/ListingAddress.vue";
 import { Link } from "@inertiajs/vue3";
 import {route} from "ziggy";
+import RealtorFilters from "./Index/Components/RealtorFilters.vue";
 
 defineProps({
     listings: Array
@@ -13,15 +14,8 @@ defineProps({
 
 <template>
     <h1 class="text-3xl mb-4">Your Listings</h1>
-    <section class="flex gap-2 mb-4">
-        <div class="flex items-center gap-2">
-            <input id="drafts" type="checkbox" />
-            <label for="drafts">Drafts</label>
-        </div>
-        <div class="flex items-center gap-2">
-            <input id="deleted" type="checkbox" />
-            <label for="deleted">Deleted</label>
-        </div>
+    <section>
+        <RealtorFilters class="flex gap-2 mb-4" />
     </section>
     <section class="grid grid-cols1 lg:grid-cols-2 gap-2">
         <Box v-for="listing in listings" :key="listing.id">
