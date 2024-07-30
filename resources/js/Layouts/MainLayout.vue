@@ -25,7 +25,9 @@ const user = computed(() => page.props.user)
                     <Link :href="route('listing.create')">
                         <Button :is-primary="true">+ New Listing</Button>
                     </Link>
-                    <div class="text-sm text-gray-500">{{ user.name }}</div>
+                    <Link :href="route('realtor.listing.Index')" class="text-sm text-gray-500">
+                        {{ user.name }}
+                    </Link>
                     <Link :href="route('logout')" method="delete" as="button">
                         <Button :is-primary="true">
                             Logout

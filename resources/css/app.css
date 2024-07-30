@@ -27,6 +27,22 @@
         duration-200;
     }
 
+    .btn-outline {
+        @apply
+        p-2
+        rounded-md
+        border
+        shadow-md
+        border-gray-300
+        dark:border-gray-800
+        hover:border-gray-400
+        hover:bg-gray-50
+        dark:hover:border-gray-700
+        dark:hover:bg-gray-800
+        transition-all
+        duration-300;
+    }
+
     .input {
         @apply
         block
