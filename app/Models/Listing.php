@@ -58,6 +58,14 @@ class Listing extends Model
             ->when(
                 $filters['areaTo'] ?? false,
                 fn ($query, $value) => $query->where('area', '<=', $value)
+            )
+            ->when(
+                $filters['draftsTo'] ?? false,
+                fn ($query, $value) => $query->where('drafts', '=', $value)
+            )
+            ->when(
+                $filters['deleted'] ?? false,
+                fn ($query, $value) => $query->withTrashed()
             );
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Listing;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Inertia\Response;
 use Inertia\ResponseFactory;
 use Throwable;
@@ -16,11 +17,23 @@ class RealtorListingController extends Controller
         $this->authorizeResource(Listing::class, 'listing');
     }
 
-    public function index(): Response|ResponseFactory
+    public function index(Request $request): Response|ResponseFactory
     {
+        $filters = [
+            'drafts' => $request->boolean('drafts'),
+            'deleted' => $request->boolean('deleted'),
+        ];
+
         return inertia(
             'Realtor/Index',
-            ['listings' => Auth::user()->listings]);
+            [
+                'listings' => Auth::user()
+                    ->listings()
+                    ->mostRecent()
+                    ->filter($filters)
+                    ->get()
+            ]
+        );
     }
 
     /**
