@@ -2,6 +2,7 @@
 import { reactive, watch } from 'vue';
 import { route } from "ziggy";
 import { router } from "@inertiajs/vue3";
+import { debounce } from "lodash";
 
 const props = defineProps({
 
@@ -12,16 +13,19 @@ const filterForm = reactive({
     deleted: false
 });
 
-watch(filterForm, () => {
-    router.get(
-        route('realtor.listing.Index'),
-        filterForm,
-        {
-            preserveState: true,
-            preserveScroll: true
-        },
-    )
-});
+watch(
+    filterForm,
+    debounce(() => {
+        router.get(
+            route('realtor.listing.Index'),
+            filterForm,
+            {
+                preserveState: true,
+                preserveScroll: true
+            },
+        )
+    }, 1000)
+);
 </script>
 
 <template>
