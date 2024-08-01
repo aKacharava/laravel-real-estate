@@ -63,8 +63,6 @@ class ListingController extends Controller
 
     public function show(Listing $listing): Response|ResponseFactory
     {
-//        Gate::authorize('view', $listing);
-
         return inertia(
             'Listing/Show',
             [
