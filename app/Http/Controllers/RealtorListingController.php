@@ -37,6 +37,11 @@ class RealtorListingController extends Controller
         );
     }
 
+    public function create(): Response|ResponseFactory
+    {
+        return inertia('Realtor/Create');
+    }
+
     /**
      * @throws Throwable
      */
