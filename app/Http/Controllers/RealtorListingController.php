@@ -42,6 +42,56 @@ class RealtorListingController extends Controller
         return inertia('Realtor/Create');
     }
 
+    public function edit(Listing $listing): Response|ResponseFactory
+    {
+        return inertia(
+            'Realtor/Edit',
+            [
+                'listing' => $listing,
+            ]
+        );
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $request->user()->listings()->create([
+            ...$request->all(),
+            ...$request->validate([
+                'beds' => 'required|integer|min:0|max:20',
+                'baths' => 'required|integer|min:0|max:20',
+                'area' => 'required|integer|min:15|max:1500',
+                'city' => 'required',
+                'zip_code' => 'required',
+                'street_name' => 'required',
+                'street_number' => 'required|min:0|max:1000',
+                'price' => 'required|integer|min:1|max:4000000',
+            ])
+        ]);
+
+        return redirect()->route('listing.Index')
+            ->with('success', 'Listing created successfully.');
+    }
+
+    public function update(Request $request, Listing $listing): RedirectResponse
+    {
+        $listing->update([
+            ...$request->all(),
+            ...$request->validate([
+                'beds' => 'required|integer|min:0|max:20',
+                'baths' => 'required|integer|min:0|max:20',
+                'area' => 'required|integer|min:15|max:1500',
+                'city' => 'required',
+                'zip_code' => 'required',
+                'street_name' => 'required',
+                'street_number' => 'required|min:0|max:1000',
+                'price' => 'required|integer|min:1|max:4000000',
+            ])
+        ]);
+
+        return redirect()->route('listing.Index')
+            ->with('success', 'Listing edited successfully.');
+    }
+
     /**
      * @throws Throwable
      */

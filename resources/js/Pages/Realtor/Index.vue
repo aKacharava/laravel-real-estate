@@ -31,23 +31,22 @@ defineProps({
                     <ListingAddress :listing="listing" />
                 </div>
                 <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
-                    <!-- TODO: Adjust route -->
-                    <Link
+                    <a
                         class="btn-outline text-xs font-medium"
-                        :href="route('realtor.listing.Index')"
+                        :href="route('listing.show', { listing: listing.id })"
+                        target="_blank"
                     >
                         Preview
-                    </Link>
-                    <!-- TODO: Adjust route -->
+                    </a>
                     <Link
+                        :href="route('realtor.listing.edit', { listing: listing.id })"
                         class="btn-outline text-xs font-medium"
-                        :href="route('realtor.listing.Index')"
                     >
                         Edit
                     </Link>
                     <Link
-                        class="btn-outline text-xs font-medium"
                         :href="route('realtor.listing.destroy', { listing: listing.id })"
+                        class="btn-outline text-xs font-medium"
                         as="button"
                         method="delete"
                     >
