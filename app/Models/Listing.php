@@ -33,7 +33,7 @@ class Listing extends Model
         return $this->belongsTo(User::class, 'by_user_id');
     }
 
-    public function image(): HasMany
+    public function images(): HasMany
     {
         return $this->hasMany(ListingImage::class);
     }
