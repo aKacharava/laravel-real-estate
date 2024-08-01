@@ -4,18 +4,19 @@ import Price from "@/Components/Price.vue";
 import ListingSpace from "@/Components/UI/ListingSpace.vue";
 import ListingAddress from "@/Components/ListingAddress.vue";
 import { Link } from "@inertiajs/vue3";
-import {route} from "ziggy";
+import { route } from "ziggy";
 import RealtorFilters from "./Index/Components/RealtorFilters.vue";
 
 defineProps({
-    listings: Array
+    listings: Array,
+    filters: Object
 })
 </script>
 
 <template>
     <h1 class="text-3xl mb-4">Your Listings</h1>
     <section>
-        <RealtorFilters class="flex gap-2 mb-4" />
+        <RealtorFilters class="flex gap-2 mb-4" :filters="filters" />
     </section>
     <section class="grid grid-cols1 lg:grid-cols-2 gap-2">
         <Box v-for="listing in listings" :key="listing.id">

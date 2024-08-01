@@ -20,16 +20,16 @@ class RealtorListingController extends Controller
     public function index(Request $request): Response|ResponseFactory
     {
         $filters = [
-            'drafts' => $request->boolean('drafts'),
             'deleted' => $request->boolean('deleted'),
+            ...$request->only(['by', 'order'])
         ];
 
         return inertia(
             'Realtor/Index',
             [
+                'filters' => $filters,
                 'listings' => Auth::user()
                     ->listings()
-                    ->mostRecent()
                     ->filter($filters)
                     ->get()
             ]
