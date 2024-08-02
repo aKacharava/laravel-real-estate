@@ -6,7 +6,6 @@ import { ref } from "vue";
 import { useMonthlyPayment } from "../../Composables/useMonthlyPayment.js";
 import PaidView from "./PaidView.vue";
 
-
 const props = defineProps({
     price: Number,
 })
