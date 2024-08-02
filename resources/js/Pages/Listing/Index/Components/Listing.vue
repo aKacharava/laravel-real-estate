@@ -5,7 +5,7 @@ import Price from "@/Components/Price.vue";
 import ListingSpace from "@/Components/UI/ListingSpace.vue";
 import ListingAddress from "@/Components/ListingAddress.vue";
 import { route } from "ziggy";
-import { useMonthlyPayment } from "../../../../Composables/useMonthlyPayment.js";
+import { useMonthlyPayment } from "@/Composables/useMonthlyPayment.js";
 
 const props = defineProps({
     listing: Object
