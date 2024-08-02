@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offer;
-use Illuminate\Http\Request;
 
 class RealtorListingAcceptOfferController extends Controller
 {
