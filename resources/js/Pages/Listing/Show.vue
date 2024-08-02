@@ -5,10 +5,16 @@ import Price from "@/Components/Price.vue";
 import Box from "@/Components/UI/Box.vue";
 import PaymentCalculator from "@/Components/PaymentCalculator/PaymentCalculator.vue";
 import MakeOffer from "./Show/Components/MakeOffer.vue";
+import { usePage } from "@inertiajs/vue3";
+import { computed } from "vue";
 
 defineProps({
     listing: Object
 })
+
+const page = usePage();
+
+const user = computed(() => page.props.user)
 </script>
 
 <template>
@@ -35,7 +41,7 @@ defineProps({
                 <ListingAddress :listing="listing" class="text-gray-500" />
             </Box>
             <PaymentCalculator :price="listing.price" />
-            <MakeOffer :listing-id="listing.id" :price="listing.price" />
+            <MakeOffer v-if="user" :listing-id="listing.id" :price="listing.price" />
         </div>
     </div>
 </template>
