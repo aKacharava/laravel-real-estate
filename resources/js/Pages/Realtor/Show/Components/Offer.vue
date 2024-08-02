@@ -3,6 +3,7 @@ import Box from "@/Components/UI/Box.vue";
 import { Link } from "@inertiajs/vue3";
 import Price from "@/Components/Price.vue";
 import { ref } from "vue";
+import {route} from "ziggy";
 
 const props = defineProps({
     offer: Object,
@@ -26,7 +27,7 @@ const madeOn = ref(new Date(props.offer.created_at).toDateString());
                 </div>
 
                 <div class="text-gray-500 text-sm">
-                    Made by John
+                    Made by {{ offer.bidder.name }}
                 </div>
 
                 <div class="text-gray-500 text-sm">
@@ -35,8 +36,10 @@ const madeOn = ref(new Date(props.offer.created_at).toDateString());
             </div>
             <div>
                 <Link
+                    :href="route('realtor.offer.accept', { offer: offer.id })"
                     class="btn-outline text-xs font-medium"
                     as="button"
+                    method="put"
                 >
                     Accept
                 </Link>
