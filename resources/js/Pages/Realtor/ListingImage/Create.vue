@@ -60,4 +60,18 @@ router.on('progress', (event) => {
             </section>
         </form>
     </Box>
+
+    <Box class="mt-4">
+        <template #header>Current Listing Images</template>
+        <section class="mt-4">
+            <div v-if="listing.images.length" class="grid grid-cols-3 gap-4">
+                <div v-for="image in listing.images" :key="image.id">
+                    <img :src="image.src" class="rounded-md" alt="Real estate image" />
+                </div>
+            </div>
+            <div v-else>
+                <p>No images uploaded.</p>
+            </div>
+        </section>
+    </Box>
 </template>

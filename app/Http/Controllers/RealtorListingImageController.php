@@ -12,6 +12,8 @@ class RealtorListingImageController extends Controller
 {
     public function create(Listing $listing): Response|ResponseFactory
     {
+        $listing->load(['images']);
+
         return inertia(
             "Realtor/ListingImage/Create",
             ['listing' => $listing]
