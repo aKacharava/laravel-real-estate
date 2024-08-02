@@ -10,8 +10,6 @@ const props = defineProps({
 const offerMadeOn = ref(
     new Date(props.offer.created_at).toDateString()
 )
-
-console.log(offerMadeOn)
 </script>
 
 <template>
