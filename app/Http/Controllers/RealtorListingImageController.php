@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use App\Models\ListingImage;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Response;
 use Inertia\ResponseFactory;
 
@@ -33,5 +35,13 @@ class RealtorListingImageController extends Controller
         }
 
         return redirect()->back()->with('success', 'Images uploaded successfully.');
+    }
+
+    public function destroy($listing, ListingImage $image): RedirectResponse
+    {
+        Storage::disk('public')->delete($image->filename);
+        $image->delete();
+
+        return redirect()->back()->with('success', 'Image deleted successfully.');
     }
 }

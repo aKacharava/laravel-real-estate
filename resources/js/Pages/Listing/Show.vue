@@ -13,7 +13,12 @@ defineProps({
 <template>
     <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4">
         <Box class="md:col-span-7 flex items-center w-full">
-            <div class="w-full text-center font-medium text-gray-500">No Images</div>
+            <div v-if="listing.images.length" class="grid grid-cols-3 gap-4">
+                <div v-for="image in listing.images" :key="image.id">
+                    <img :src="image.src" alt="Real estate listing image" class="rounded-md" />
+                </div>
+            </div>
+            <div v-else class="w-full text-center font-medium text-gray-500">No Images</div>
         </Box>
         <div class="flex flex-col gap-4 md:col-span-5">
             <Box>
