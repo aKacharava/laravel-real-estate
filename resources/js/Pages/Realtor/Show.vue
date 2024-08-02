@@ -6,6 +6,7 @@ import Box from '@/Components/UI/Box.vue';
 import { Link } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import { route } from "ziggy";
+import Offer from "./Show/Components/Offer.vue";
 
 const props = defineProps({
     listing: Object
@@ -33,7 +34,13 @@ const hasOffers = computed(
         </Box>
 
         <div v-else class="md:col-span-7 items-center">
-            This is displayed when there are offers!
+            <Offer
+                v-for="offer in listing.offers"
+                :key="offer.id"
+                :offer="offer"
+                :listing-price="listing.price"
+                class="mb-4"
+            />
         </div>
 
         <Box class="md:col-span-5">
