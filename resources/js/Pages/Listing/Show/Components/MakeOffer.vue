@@ -3,13 +3,16 @@ import Box from "@/Components/UI/Box.vue";
 import Slider from "@/Components/UI/Slider.vue";
 import Price from "@/Components/Price.vue";
 import { useForm } from "@inertiajs/vue3";
-import { computed } from "vue";
-import {route} from "ziggy";
+import { computed, watch } from "vue";
+import { route } from "ziggy";
+import { debounce } from "lodash";
 
 const props = defineProps({
     listingId: Number,
     price: Number
 })
+
+const emit = defineEmits(['offerUpdated'])
 
 const form = useForm({
     amount: props.price
@@ -26,6 +29,13 @@ const makeOffer = () => form.post(
 const difference = computed(() => form.amount - props.price);
 const minimum = computed(() => Math.round(props.price) / 2);
 const maximum = computed(() => Math.round(props.price) * 2);
+
+watch(
+    () => form.amount,
+    debounce(
+    (value) => emit('offerUpdated', value)
+    , 200)
+);
 </script>
 
 <template>

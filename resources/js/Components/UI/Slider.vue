@@ -1,5 +1,8 @@
 <script setup>
-defineProps({
+import { watch } from "vue";
+import { debounce } from "lodash";
+
+const props = defineProps({
     label: String,
     sliderValue: Number,
     min: String|Number,
@@ -12,6 +15,13 @@ const emit = defineEmits(['update:sliderValue'])
 const handleSlider = (event) => {
     emit('update:sliderValue', parseFloat(event.target.value))
 }
+
+watch(
+    () => props.sliderValue,
+    debounce(
+    (value) => emit('update:sliderValue', value)
+    , 200)
+);
 </script>
 
 <template>
