@@ -2,8 +2,8 @@
 defineProps({
     label: String,
     sliderValue: Number,
-    min: String,
-    max: String,
+    min: String|Number,
+    max: String|Number,
     step: String
 })
 

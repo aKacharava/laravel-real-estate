@@ -3,7 +3,8 @@ import ListingAddress from "@/Components/ListingAddress.vue";
 import ListingSpace from "@/Components/UI/ListingSpace.vue";
 import Price from "@/Components/Price.vue";
 import Box from "@/Components/UI/Box.vue";
-import PaymentCalculator from "../../Components/PaymentCalculator/PaymentCalculator.vue";
+import PaymentCalculator from "@/Components/PaymentCalculator/PaymentCalculator.vue";
+import MakeOffer from "./Show/Components/MakeOffer.vue";
 
 defineProps({
     listing: Object
@@ -34,6 +35,7 @@ defineProps({
                 <ListingAddress :listing="listing" class="text-gray-500" />
             </Box>
             <PaymentCalculator :price="listing.price" />
+            <MakeOffer :listing-id="listing.id" :price="listing.price" />
         </div>
     </div>
 </template>
