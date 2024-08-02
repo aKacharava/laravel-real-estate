@@ -70,7 +70,7 @@ defineProps({
                             :href="route('realtor.listing.image.create', { listing: listing.id })"
                             class="block w-full btn-outline text-xs font-medium text-center"
                         >
-                            Upload images
+                            Upload images <span>({{ listing.images_count }})</span>
                         </Link>
                     </div>
                 </section>
