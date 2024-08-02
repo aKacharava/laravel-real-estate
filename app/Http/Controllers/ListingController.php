@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Listing;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Response;
 use Inertia\ResponseFactory;
 
@@ -43,11 +44,15 @@ class ListingController extends Controller
     public function show(Listing $listing): Response|ResponseFactory
     {
         $listing->load(['images']);
+        $offer = !Auth::user() ?
+            null :
+            $listing->offers()->byMe()->first();
 
         return inertia(
             'Listing/Show',
             [
                 'listing' => $listing,
+                'offerMade' => $offer,
             ]
         );
     }

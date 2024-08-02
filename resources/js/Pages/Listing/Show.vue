@@ -9,9 +9,11 @@ import {computed, ref} from "vue";
 import PaidView from "@/Components/PaymentCalculator/PaidView.vue";
 import Slider from "@/Components/UI/Slider.vue";
 import { useMonthlyPayment } from "@/Composables/useMonthlyPayment.js";
+import OfferMade from "./Show/Components/OfferMade.vue";
 
 const props = defineProps({
-    listing: Object
+    listing: Object,
+    offerMade: Object
 });
 
 const page = usePage();
@@ -65,12 +67,15 @@ const { monthlyPayment, totalPaid, totalInterest } = useMonthlyPayment(offer, in
                     <PaidView label="Interest paid" :price="totalInterest" />
                 </div>
             </Box>
-            <MakeOffer
-                v-if="user"
-                :listing-id="listing.id"
-                :price="listing.price"
-                @offer-updated="offer = $event"
-            />
+            <div v-if="user">
+                <MakeOffer
+                    v-if="!offerMade"
+                    :listing-id="listing.id"
+                    :price="listing.price"
+                    @offer-updated="offer = $event"
+                />
+                <OfferMade v-else :offer="offerMade" />
+            </div>
         </div>
     </div>
 </template>
