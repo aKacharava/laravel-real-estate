@@ -73,6 +73,14 @@ defineProps({
                             Upload images <span>({{ listing.images_count }})</span>
                         </Link>
                     </div>
+                    <div class="mt-2">
+                        <Link
+                            :href="route('realtor.listing.show', { listing: listing.id })"
+                            class="block w-full btn-outline text-xs font-medium text-center"
+                        >
+                            Offers <span>({{ listing.offers_count }})</span>
+                        </Link>
+                    </div>
                 </section>
             </div>
         </Box>
