@@ -27,8 +27,8 @@ const makeOffer = () => form.post(
 )
 
 const difference = computed(() => form.amount - props.price);
-const minimum = computed(() => Math.round(props.price) / 2);
-const maximum = computed(() => Math.round(props.price) * 2);
+const minimum = computed(() => Math.round(props.price / 2));
+const maximum = computed(() => Math.round(props.price * 2));
 
 watch(
     () => form.amount,
