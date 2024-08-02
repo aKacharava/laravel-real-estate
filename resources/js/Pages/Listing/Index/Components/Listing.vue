@@ -4,7 +4,6 @@ import Box from "@/Components/UI/Box.vue";
 import Price from "@/Components/Price.vue";
 import ListingSpace from "@/Components/UI/ListingSpace.vue";
 import ListingAddress from "@/Components/ListingAddress.vue";
-import Button from "@/Components/UI/Button.vue";
 import { route } from "ziggy";
 import { useMonthlyPayment } from "../../../../Composables/useMonthlyPayment.js";
 
