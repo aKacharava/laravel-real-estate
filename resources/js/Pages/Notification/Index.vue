@@ -23,7 +23,15 @@ const props = defineProps({
                 </span>
             </div>
             <div>
-                <button v-if="!notification.read_at" class="btn-outline text-xs font-medium uppercase">Mark as read</button>
+                <Link
+                    v-if="!notification.read_at"
+                    :href="route('notification.seen', { notification: notification.id })"
+                    class="btn-outline text-xs font-medium uppercase"
+                    as="button"
+                    method="put"
+                >
+                    Mark as read
+                </Link>
             </div>
         </div>
     </section>

@@ -22,6 +22,12 @@ Route::resource('notification', NotificationController::class)
     ->middleware('auth')
     ->only(['Index']);
 
+Route::put(
+    'notification/{notification}/seen',
+    \App\Http\Controllers\NotificationSeenController::class
+)->middleware('auth')
+->name('notification.seen');
+
 Route::get('login', [AuthController::class, 'create'])
     ->name('login');
 Route::post('login', [AuthController::class, 'store'])
