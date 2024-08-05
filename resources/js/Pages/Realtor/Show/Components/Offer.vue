@@ -2,18 +2,17 @@
 import Box from "@/Components/UI/Box.vue";
 import { Link } from "@inertiajs/vue3";
 import Price from "@/Components/Price.vue";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { route } from "ziggy";
 
 const props = defineProps({
     offer: Object,
-    listingPrice: Number
+    listingPrice: Number,
+    isSold: Boolean
 });
 
 const difference = ref(props.offer.amount - props.listingPrice);
 const madeOn = ref(new Date(props.offer.created_at).toDateString());
-
-const notSold = computed(() => !props.offer.accepted_at && !props.offer.declined_at)
 </script>
 
 <template>
@@ -38,7 +37,7 @@ const notSold = computed(() => !props.offer.accepted_at && !props.offer.declined
             </div>
             <div>
                 <Link
-                    v-if="notSold"
+                    v-if="!isSold"
                     :href="route('realtor.offer.accept', { offer: offer.id })"
                     class="btn-outline text-xs font-medium"
                     as="button"
